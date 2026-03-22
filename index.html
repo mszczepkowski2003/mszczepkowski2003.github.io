@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michal Szczepkowski - Portfolio</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --surface-color: #161b22;
+            --surface-hover: #21262d;
+            --primary-color: #58a6ff;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent-glow: rgba(88, 166, 255, 0.4);
+            --border-color: #30363d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            margin-top: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 40px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 6rem;
+            /* Clean, fixed top spacing */
+            padding-bottom: 2rem;
+            /* Significantly reduced bottom space */
+            border-bottom: none;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            letter-spacing: -1.5px;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+        }
+
+        .hero .subtitle {
+            font-size: 1.75rem;
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            color: var(--text-muted);
+        }
+
+        /* Tech Stack */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.5rem;
+            border-radius: 999px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 12px var(--accent-glow);
+            transform: translateY(-2px);
+            background-color: var(--surface-hover);
+            color: #fff;
+        }
+
+        .skill-tag-highlight {
+            border-color: #ff6f00;
+            box-shadow: 0 0 10px rgba(255, 111, 0, 0.4);
+            color: #fff;
+        }
+
+        .award-highlight {
+            border-color: #e3b341;
+            box-shadow: 0 0 8px rgba(227, 179, 65, 0.2);
+        }
+
+        .award-highlight .cred-title {
+            color: #e3b341;
+        }
+
+        /* Credentials Layout */
+        .credentials-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .credential-item {
+            background-color: var(--surface-color);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cred-title {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .cred-meta {
+            color: var(--text-muted);
+        }
+
+        /* Cards Layout */
+        .card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), 0 0 12px var(--accent-glow);
+            transform: translateY(-4px);
+        }
+
+        .card-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.35rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Grid Layout for Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Stacked Layout for Cards */
+        .cards-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .callout-box {
+            background-color: var(--surface-color);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.25rem 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 2rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .experience-list {
+            color: var(--text-muted);
+            margin-left: 1.25rem;
+            margin-top: 1rem;
+            line-height: 1.8;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .experience-list li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
+        .experience-list strong {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.35rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .card-meta {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Michal Szczepkowski</h1>
+            <div class="subtitle">Data Scientist</div>
+            <div style="margin-bottom: 2rem;">
+                <a href="https://www.linkedin.com/in/michał-szczepkowski-6849362b8/?locale=%20target%3D" target="_blank"
+                    class="btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                    LinkedIn Profile
+                </a>
+            </div>
+            <p>Driven by a lifelong curiosity to understand 'why,' I’ve found my home in Data Science.
+                I don't just see numbers; I see stories waiting to be told. I am passionate about
+                building data-driven solutions that turn raw complexity into clear, actionable strategy</p>
+        </section>
+
+        <!-- Tech Stack -->
+        <section>
+            <h2>Tech Stack</h2>
+            <div class="skills-grid">
+                <div class="skill-tag skill-tag-highlight">Python</div>
+                <div class="skill-tag skill-tag-highlight">R</div>
+                <div class="skill-tag skill-tag-highlight">PostgreSQL</div>
+                <div class="skill-tag">Pandas</div>
+                <div class="skill-tag">Scikit-Learn</div>
+                <div class="skill-tag">TensorFlow</div>
+                <div class="skill-tag">PyTorch</div>
+                <div class="skill-tag">Optuna</div>
+                <div class="skill-tag">Docker</div>
+                <div class="skill-tag">Git</div>
+                <div class="skill-tag">Tableau</div>
+
+
+            </div>
+        </section>
+
+        <!-- Credentials (Education & Certifications Condensed) -->
+        <section>
+            <h2>Credentials</h2>
+            <div class="credentials-bar">
+                <div class="credential-item skill-tag-highlight">
+                    <span class="cred-title">M.Sc. Computer Science an Econometrics: Big Data specialization</span>
+                    <span class="cred-meta">@ University of Gdańsk (2025-2027)</span>
+                </div>
+                <div class="credential-item">
+                    <span class="cred-title">B.Sc. CS & Econometrics: Methods of Data Analysis specialization</span>
+                    <span class="cred-meta">@ University of Gdańsk (2022-2025)</span>
+                </div>
+                <div class="credential-item award-highlight"
+                    style="flex-direction: column; align-items: flex-start; gap: 0.25rem;">
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: baseline;">
+                        <span class="cred-title">🏆 Main Award in Bachelor's thesis competition</span>
+                        <span class="cred-meta">@ Polish Economic Society (2025)</span>
+                    </div>
+                    <span style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; max-width: 550px;">
+                        Awarded by the Polish Economic Society for my thesis related to automation of real estate
+                        appraisal
+                        with the use of Random Forest.
+                    </span>
+                </div>
+                <div class="credential-item">
+                    <span class="cred-title">Deep Learning Specialization</span>
+                    <span class="cred-meta">@ Coursera (2025)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section>
+            <h2>Professional Experience</h2>
+            <div class="card" style="margin-bottom: 2rem;">
+                <div class="card-header">
+                    <h3 class="card-title">Junior Data Analyst in Actuarial Pricing </h3>
+                    <div class="card-meta">
+                        <span>Tech Innovations Inc.</span>
+                        <span>Jan 2021 - Present</span>
+                    </div>
+                </div>
+                <p>Working in a consulting company specializing in insurance pricing modeling. I am responsible for
+                    developing and maintaining pricing models for insurance products. Key responsibilities and projects
+                    include:</p>
+                <ul class="experience-list">
+                    <li><strong>Data Preparation & Structuring:</strong> Managed the end-to-end data celaning process
+                        for
+                        "Real world" large data sets Which included merging data from multiple sources.
+                        Cleaning and structuring complex actuarial data for rigorous analysis.</li>
+                    <li><strong>Feature Engineering & Selection:</strong> Being involved in the process of creating new
+                        insightful
+                        features
+                        based on a domain knowledge and with the use of automation tehniques.</li>
+                    <li><strong>Insurance Pricing Modeling:</strong> Developed and maintained Generalized Linear Models
+                        for various insurance products,ensuring accuracy in risk assesment, premium calculation keeping
+                        in mind the interpretability
+                        requirements and business goals of the clients.</li>
+                    <li><strong>Unstructured Data Extraction:</strong> Developed a custom Python script for automated
+                        PDF parsing,
+                        successfully extracting, structuring and transforming the critical data for model validation.
+                    </li>
+                    <li><strong>Cross-Functional Collaboration:</strong> Worked in a team of non-tehnical experts,
+                        actuaries and other analysts so i had to be able to translate tehnical statistical
+                        information into practical business insights, ensuring findings
+                        were accessible and actionable for the wider team.</li>
+
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section>
+            <h2>Featured Projects</h2>
+            <div class="callout-box">
+                <strong style="color: var(--text-main); font-weight: 600;">Why projects?:</strong>
+                These projects are my interactive playground. They allow me to experiment with new techniques, explore
+                domains beyond my daily work, and continuously grow as a Data Scientist. More than just a showcase of
+                skills, this is where I challenge myself to learn and build new things.
+            </div>
+            <div class="cards-stack">
+                <!-- Project 1 -->
+                <div class="card">
+                    <h3 class="card-title">End-to-End Churn Prediction: From Data Engineering to API Deployment</h3>
+
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                        <strong style="color: var(--text-main);">Tech Stack:</strong> Python, PostgreSQL, TensorFlow,
+                        XGBoost, Scikit-Learn, Plotly, Matplotlib, FastAPI, Docker, Optuna, Quarto<br>
+                        <strong style="color: var(--text-main);">Main Language:</strong> Polish
+                    </p>
+
+                    <ul class="experience-list">
+                        <li>
+                            <strong>Key challenges: </strong><br>
+                            - Adressing the class imbalance<br>
+                            - Dealing with missing data<br>
+                            - Reducing the number of features<br>
+                            - Optimizing the model<br>
+                            - Deploying the model<br>
+                            - Reporting the results
+                        </li>
+                        <li>
+                            <strong>Data Architecture & Engineering:</strong> <br>
+                            - Designed a PostgreSQL database with a Snowflake schema to consolidate 6 raw datasets. <br>
+                            - Built custom Scikit-Learn transformers to guarantee a leak-proof pipeline, utilizing KNN
+                            and Iterative Imputers for missing data.
+                        </li>
+                        <li>
+                            <strong>Exploratory Data Analysis and business insights:</strong> <br>
+                            - Conducted deep exploratory analysis to find the answer to the question: why customers are
+                            leaving the company.<br>
+                            - Exploited the power of Phi-k correlation and Miscore classification for reducing the
+                            number of features in the model.
+                        </li>
+                        <li>
+                            <strong>Modeling & Optimization:</strong><br>
+                            - Adressed class imbalance by weighing the classes and initializing bias in MLP.<br>
+                            - Built and compared XGBoost and MLP models that both achieved AUC 0.93-0.94<br>
+                            - Leveraged Optuna for Bayesian Optimization for hyperparameter tuning with pruning strategy
+                            for time and resource efficiency
+                        </li>
+                        <li>
+                            <strong>Deployment & Reporting</strong><br>
+                            - Deployed the final model as a RESTful service using FastAPI and Docker, ensuring the
+                            environment is fully reproducible and ready for production.<br>
+                            - Generated a comprehensive tehnical and busines report in quarto that documented the
+                            results of Exploratory Data Analysis
+                        </li>
+                    </ul>
+
+                    <div class="card-actions">
+                        <a href="https://github.com/mszczepkowski2003/Telco_churn_analysis" class="btn">View
+                            Repository</a>
+                        <a href="https://churn-eda-report.netlify.app/" class="btn">View Quarto Report</a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="card">
+                    <h3 class="card-title">Flying Object Classification with MobileNetV3</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                        <strong style="color: var(--text-main);">Tech Stack:</strong> Python, TensorFlow,
+                        MobileNetV3-Large, Docker, FastAPI<br>
+                        <strong style="color: var(--text-main);">Main Language:</strong> English
+                    </p>
+                    <ul class="experience-list">
+                        <li>
+                            <strong>Key challenges:</strong><br>
+                            - <strong>Data Scarcity & Splitting: </strong> Managed a limited dataset by implementing a
+                            70/15/15 (Train/Val/Test)
+                            split to ensure robust validation and final testing despite small sample sizes. <br>
+                            - <strong>Preventing Overfitting: </strong> Adressed the risk of high variance by
+                            implementing various Data Augumentation
+                            strategies, effectively expanding the training set and improving the model's ability to
+                            generalize to new environments.<br>
+                            - <strong>Hardware Constraints:</strong> Balanced high-performance requirements with the
+                            limited CPU power of potential
+                            deployment hardwe (e.g. CCTV cameras). This required selecting an architecture that
+                            prioritizes low computational latency without sacrificing accuracy.
+                        </li>
+                        <li>
+                            <strong>Data Engineering & Optimization:</strong><br>
+                            - <strong>Pipeline Efficiency: </strong> Utilized TensorFlow's .cache() and prefetching
+                            mechanisms to maximize training
+                            throughput, ensuring the GPU remained saturated and preventing I/O memory bottlenecks.<br>
+                            - Preprocessing: </strong> Engineered a pipeline that integrated real-time data
+                            augumentation.
+                        </li>
+                        <li>
+                            <strong>Architecture & Transfer Learning Strategy:</strong><br>
+                            - <strong>Architecture selection:</strong> Selected MobileNetV3 Large for its use of
+                            depthwise separable convoelutions,
+                            making it ideal for edge devices with restrcted power and memory capacity <br>
+                            - <strong>Two-stage training: </strong>
+                            <ul style="list-style-type: disc; margin-left: 20px;">
+                                <strong>Feature extraction:</strong> Initially froze the MobileNet bacckbone (pretrained
+                                on imageNet) to train a custom classification head.<br>
+                                <strong>Fine-tuning:</strong> Unfroze deep layers and retrained with a significantly
+                                lower learning rate to
+                                align the pretrained weights with specific visual features of drones, birds and
+                                aircrafts.<br>
+                            </ul>
+
+                        </li>
+
+                        <li>
+                            <strong>Results & Insights:</strong><br>
+                            - <strong>Performance: </strong> Achieved a <strong>95% weighted accuracy</strong>,
+                            demonstrating strong class separation even with constraints of small fine-tunning
+                            dataset.<br>
+                            - <strong>Error Analysis: </strong> Performed post-training error analysis to identify
+                            specific edge cases - such as distant or blurry objects that proved problematic for the
+                            model, providing a roadmap for future data collection.
+                        </li>
+                        <li>
+                            <strong>Deployment:</strong><br>
+                            - <strong>Production Readiness: </strong> Deployed the final model as a RESTful API using
+                            FastAPI, providing a lightweight interface for real-time inference.<br>
+                            - <strong>Containerization:</strong> Fully dockerized the application to ensure
+                            environmental consistency and easy portability across different production servers.
+                        </li>
+                    </ul>
+                    <div class="card-actions">
+                        <a href="https://github.com/mszczepkowski2003/Birds_drones_planes_classification"
+                            class="btn">View Repository</a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="card">
+                    <h3 class="card-title">Titanic Survival Prediction: A Structured Pipeline Approach</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                        <strong style="color: var(--text-main);">Tech Stack:</strong> Python, Pandas, Scikit-Learn<br>
+                        <strong style="color: var(--text-main);">Main Language:</strong> English
+                    </p>
+                    <ul class="experience-list">
+                        <li>
+                            <strong>Key challenges:</strong><br>
+                            - <strong>Transitioning from notebooks: </strong> Moving beyond linear Jupyter Notebooks to
+                            a structured modular Python environmentto improve code maintainability and version control.
+                            <br>
+                            - <strong>Custom Preprocessing: </strong> Implementing custom Scikit-Learn Transformers for
+                            the first time to handle specific data cleaning within a formal pipeline
+                        </li>
+                        <li>
+                            <strong>Core Development: </strong><br>
+                            - <strong> Modular Architecture:</strong>Developed a centralized main.py script that manages
+                            the entire workflow—from raw data ingestion to final model evaluation report.<br>
+                            - <strong> Pipeline engineering:</strong> Built robust Scikit-Learn Pipelines to ensure a
+                            leak-proof and reproducible data transformation process.
+                            - <stong> Various Modelling Techniques:</stong> Explored and compared the performance of
+                            multiple classifiers including Random Forest, Support Vector Machines and AdaBoost.
+                        </li>
+                        <li>
+                            <strong>Automated Reporting: </strong><br>
+                            - <strong>Insight Generation:</strong> Built an automated reporting feature that exports
+                            model metrics, comparison tables, and performance plots into a structured .xlsx report for
+                            quick analysis of results.
+                        </li>
+                    </ul>
+                    <div class="card-actions">
+                        <a href="https://github.com/mszczepkowski2003/Titanic_survival_classification" class="btn">View
+                            Repository</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 Michal Szczepkowski. Built with semantic HTML & CSS.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
