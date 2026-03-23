@@ -109,7 +109,7 @@
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.4rem;
             max-width: 700px;
             color: var(--text-muted);
         }
@@ -324,7 +324,7 @@
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
             }
 
             .card-meta {
@@ -355,8 +355,8 @@
                     LinkedIn Profile
                 </a>
             </div>
-            <p>Data Scientist with a background in insurance
-                pricing modeling, focused on transforming complex
+            <p>Data Scientist with a background in 
+                risk modelling, focused on transforming complex
                 datasets into efficient, automated solutions. I am
                 driven by a practical curiosity to understand the
                 'why' behind the data, bridging the gap between
@@ -429,31 +429,42 @@
                     <strong>Key responsibilities include:</strong>
                 </p>
                 <ul class="experience-list">
-                    <li><strong>Data Preparation & Structuring:</strong> Performing the end-to-end data cleaning and
-                        structuring process
+                    <li><strong>Data Preparation & Structuring:</strong> Took part in the data cleaning and
+                        structuring process of datasets with over 300M total data points (1M+ rows x 300+ features),
+                        which included merging data from multiple sources, dealing with outliers and missing data.</li>
+                    <li><strong>Feature Engineering & Selection:</strong> Leveraged domain expertise and automated
+                        generation
+                        techniques to engineer high impact features, consistently optimizing for the Bayesian
+                        Information
+                        Criterion (BIC).
+                        This rigorous selection process enhanced model predictive power and risk segmentation, allowing
                         for
-                        "Real world" large data sets which included merging data from multiple sources, dealing with
-                        outliers
-                        and missing data.</li>
-                    <li><strong>Feature Engineering & Selection:</strong> Being involved in the process of creating new
-                        insightful
-                        features
-                        based on a domain knowledge and with the use of automation techniques.</li>
-                    <li><strong>Insurance Pricing Modeling:</strong> Developed and maintained Generalized Linear Models
-                        for various insurance products, ensuring accuracy in risk assessment, premium calculation
-                        keeping
-                        in mind the interpretability
-                        requirements and business goals of the clients.</li>
-                    <li><strong>Unstructured Data Extraction:</strong> Developed a custom Python script for automated
-                        PDF parsing,
-                        successfully extracting, structuring and transforming the critical data for model validation.
-                    </li>
-                    <li><strong>Automated Data Delivery & Reporting:</strong> Developed a large scale modular R codebase
-                        to automate the transformation
-                        of pricing model outputs into complex, client-ready .xlsx files that matched the
-                        requrements of the client. That sollution replaced a manual process that would took
-                        hours to complete with a reproducible automated workflow, siginificantly reducing the delivery
-                        lifecycle and the risk of human error.
+                        more competitive
+                        pricing for low risk profiles while accurately adjusting premiums for high risk segments
+                        directly
+                        driving company
+                        profitability and market competitiveness.</li>
+                    <li><strong>Insurance Pricing Modeling:</strong> Contributed to the end-to-end development and
+                        maintenance of 16+ Generalized Linear Models (GLMs). Ensured high-fidelity risk assessment and
+                        premium accuracy while balancing strict interpretability requirements with client business
+                        objectives.</li>
+                    <li><strong>Unstructured Data Extraction:</strong> Developed a custom Python-based parsing engine
+                        to automate information retrieval from complex PDF documents. Achieved a processing throughput
+                        of ~1.16
+                        PDFs per second, successfully extracting and structuring 50+ critical variables across
+                        multi-page
+                        layouts, enabling the rapid batch validation of 1000+ records to identify model discrepancies
+                        and ensure
+                        consistent prediction accuracy.</li>
+                    <li><strong>Automated Data Delivery & Reporting:</strong> Engineered a modular R-based system
+                        (4,000+ lines of code)
+                        to automate the transformation of complex pricing model outputs into structured, client-ready
+                        deliverables. By
+                        replacing a manual 3-day process with a reproducible, semi-automated workflow, reduced the
+                        delivery lifecycle
+                        to under 3 hours a 90% improvement in efficiency that significantly minimized the risk of human
+                        error in high-stakes
+                        financial reporting.
                     </li>
                     <li><strong>Cross-Functional Collaboration:</strong> Worked in a team of non-technical experts,
                         actuaries and other analysts so I had to be able to translate technical statistical
@@ -496,34 +507,45 @@
                         </li>
                         <li>
                             <strong>Data Architecture & Engineering:</strong> <br>
-                            - Designed a PostgreSQL database with a Snowflake schema to consolidate 6 raw datasets. <br>
-                            - Built custom Scikit-Learn transformers to guarantee a leak-proof pipeline, utilizing KNN
-                            and Iterative Imputers for missing data.
+                            - <strong> Data Consolidaton: </strong>Designed a PostgreSQL database with a Snowflake
+                            schema to consolidate 6 raw datasets. <br>
+                            - <strong> Leak-proof Architecture: </strong>Engineered custom Scikit-Learn transformers to
+                            build a robust pipeline that prevents
+                            data leakage during training and inference.<br>
+                            - <strong> Advanced Imputation: </strong> Implemended KNN and Iterative Imputers to recover
+                            ~20%
+                            of the dataset that would otherwise have been discarded. This preserved over 1 400 critical
+                            observations
+                            maintaining the statistical power necessary for a 7 000 row dataset.
                         </li>
                         <li>
                             <strong>Exploratory Data Analysis and business insights:</strong> <br>
                             - Conducted deep exploratory analysis to find the answer to the question: why customers are
                             leaving the company?<br>
-                            - Exploited the power of Phi-k correlation and Miscore classification for reducing the
-                            number of features in the model.
+                            - Exploited the power of Phi-k correlation and Miscore classification to exploit complex,
+                            non linear dependencies across ~50 initial features, systematically pruning the space to the
+                            most
+                            predictive signals while reducing model noise.
                         </li>
                         <li>
                             <strong>Modeling & Optimization:</strong><br>
                             - Addressed class imbalance by weighing the classes and initializing bias in MLP.<br>
                             - Built and compared XGBoost and MLP models that both achieved AUC 0.93-0.94<br>
-                            - Leveraged Optuna for Bayesian Optimization for hyperparameter tuning with pruning strategy
-                            for time and resource efficiency<br>
+                            - Executed 300 trials of Bayesian Optimization via Optuna to systematically discover the
+                            optimal hyperparameter subset. By implementing pruning strategy I successfully terminated
+                            80%
+                            of underperforming trials early, significantly reducing total search time.<br>
                             - Evaluated models using metrics such as AUC, precision, recall, F1-score, and confusion
                             matrix <br>
-                            - Dove into the interpretability of the models using SHAP values to understand the drivers
-                            of customer churn<br>
+                            - Dove into the interpretability of the models using SHAP values to understand the decision
+                            process of the XGBoost model of customer churn<br>
                         </li>
                         <li>
                             <strong>Deployment & Reporting</strong><br>
                             - Deployed the final model as a RESTful service using FastAPI and Docker, ensuring the
                             environment is fully reproducible and ready for production.<br>
                             - Generated a comprehensive technical and business report in quarto that documented the
-                            results of Exploratory Data Analysis
+                            results of Exploratory Data Analysis and preprocessing.
                         </li>
                     </ul>
 
@@ -572,13 +594,15 @@
                             making it ideal for edge devices with restricted power and memory capacity <br>
                             - <strong>Two-stage training: </strong>
                             <ul style="list-style-type: disc; margin-left: 20px;">
-                                <li><strong>Feature extraction:</strong> Initially froze the MobileNet backbone
-                                    (pretrained
-                                    on imageNet) to train a custom classification head.</li>
-                                <li><strong>Fine-tuning:</strong> Unfroze deep layers and retrained with a significantly
-                                    lower learning rate to
-                                    align the pretrained weights with specific visual features of drones, birds and
-                                    aircrafts.</li>
+                                - <strong>Feature extraction:</strong> Initially froze the MobileNet backbone
+                                (pretrained on imageNet) to train a custom classification head.
+                                I implemented Global Average Pooling instead of traditoinal fully connected layers to
+                                reduce the parameter count
+                                and computational cost.<br>
+                                - <strong>Fine-tuning:</strong> Unfroze deep layers and retrained with a significantly
+                                lower learning rate to
+                                align the pretrained weights with specific visual features of drones, birds and
+                                aircrafts.
                             </ul>
 
                         </li>
